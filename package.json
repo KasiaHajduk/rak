@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-07-phonebook",
+  "name": "rak",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://kasiahajduk.github.io/goit-react-hw-07-phonebook/",
+  "homepage": "http://kasiahajduk.github.io/rak/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^4.2.4",
