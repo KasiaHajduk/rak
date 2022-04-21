@@ -1,85 +1,42 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const apiURL = "https://connections-api.herokuapp.com";
-
-export const signupUser = createAsyncThunk("users/signupUser", async (user) => {
-  try {
-    const { data } = await axios.post(`${apiURL}/users/signup`, {
-      name: user.name,
-      email: user.email,
-      password: user.password,
-    });
-    return data;
-  } catch (error) {
-    return error?.response;
-  }
-});
-
-export const loginUser = createAsyncThunk("users/loginUser", async (user) => {
-  try {
-    const { data } = await axios.post(`${apiURL}/users/login`, {
-      email: user.email,
-      password: user.password,
-    });
-    return data;
-  } catch (error) {
-    return error?.response;
-  }
-});
-
-export const logoutUser = createAsyncThunk(
-  "users/logoutUser",
-  async (token) => {
-    axios.defaults.headers.Authorization = `Bearer ${token}`;
-    try {
-      const { data } = await axios.post(`${apiURL}/users/logout`);
-      return data;
-    } catch (error) {
-      return error?.response;
-    }
-  }
-);
+const baseURL = "https://62547a0019bc53e2347f18bb.mockapi.io/";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchContacts",
-  async (token) => {
-    axios.defaults.headers.Authorization = `Bearer ${token}`;
+  async () => {
     try {
-      const { data } = await axios.get(`${apiURL}/contacts`);
+      const { data } = await axios.get(`${baseURL}/contacts`);
       return data;
     } catch (error) {
-      return error?.response;
+      return console.error(error);
     }
   }
 );
 
 export const addContact = createAsyncThunk(
   "contacts/addContact",
-  async ({ token, userData }) => {
-    axios.defaults.headers.Authorization = `Bearer ${token}`;
+  async (contact) => {
     try {
-      const { data } = await axios.post(`${apiURL}/contacts`, {
-        name: userData.name,
-        number: userData.number,
-      });
+      const { data } = await axios.post(`${baseURL}/contacts`, contact);
       return data;
     } catch (error) {
-      return error?.response;
+      return console.error(error);
     }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",
-  async ({ token, id }) => {
-    axios.defaults.headers.Authorization = `Bearer ${token}`;
-    await axios.delete(`${apiURL}/contacts/${id}`);
+  async (id) => {
+    await axios.delete(`${baseURL}/contacts/${id}`);
     try {
-      const { data } = await axios.get(`${apiURL}/contacts`);
+      const { data } = await axios.get(`${baseURL}/contacts`);
       return data;
     } catch (error) {
-      return error?.response;
+      return console.error(error);
     }
   }
 );
+ 

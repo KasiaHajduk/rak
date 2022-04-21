@@ -1,0 +1,27 @@
+.pb__form {
+  width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #000000;
+    text-align: left;
+    margin: 20px;
+}
+
+.pb__label {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pb__input {
+  width: 150px;
+  margin-top: 10px;
+}
+
+.pb__add {
+  margin-top: 10px;
+  width: 100px;
+}
+
